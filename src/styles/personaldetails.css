@@ -1,0 +1,10 @@
+.personalgrid{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+}
+
+.personaldetails{
+    width: 100%;
+    height: 100vh;
+}
