@@ -64,7 +64,7 @@ export default function Personaldetails() {
                     </Label>
                     <Input
                         id="fname"
-                        name="first name"
+                        name="firstname"
                         placeholder="First Name"
                         type="text"
                         onChange={(e) =>{

@@ -1,0 +1,6 @@
+.template{
+    margin-top: 8.3rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10rem;
+}
