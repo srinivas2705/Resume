@@ -1,8 +1,32 @@
+import axios from "axios";
 import React from "react";
+import { useDispatch } from "react-redux";
 import {Label, Input} from "reactstrap";
+import {update} from "../redux/slice/personaldetailsSlice";
 import "../styles/personaldetails.css";
 
+
+
 export default function Personaldetails() {
+    const dispatch = useDispatch();
+
+    const handleUpload = async(event) =>{
+        const url="https://api.cloudinary.com/v1_1/dfmul9qmz/image/upload";
+        const formData = new FormData();
+
+        formData.append("upload_preset", "resume");
+        const file = event.target.files;
+        formData.append("file", file[0]);
+
+        const response = await axios.post(url, formData);
+        if(response.data.url){
+            dispatch(update({
+                key: event.target.name,
+                value: response.data.url
+            }))
+        }
+    } 
+
     return (
         <div className="personaldetails">
             <h4>Personal Details</h4>
@@ -16,9 +40,23 @@ export default function Personaldetails() {
                         name="jobtitle"
                         placeholder="Job Title"
                         type="text"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
-                <div></div>
+                <div>
+                    <Label for="profile">Upload photo</Label>
+                    <Input
+                    id="profile"
+                    name="profile"
+                    type="file"
+                    onChange={(e) => handleUpload(e)}
+                    />
+                </div>
 
                 <div>
                 <Label for="first name">
@@ -29,6 +67,12 @@ export default function Personaldetails() {
                         name="first name"
                         placeholder="First Name"
                         type="text"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -40,6 +84,12 @@ export default function Personaldetails() {
                         name="lastname"
                         placeholder="Last Name"
                         type="text"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -51,6 +101,12 @@ export default function Personaldetails() {
                         name="email"
                         placeholder="Email"
                         type="email"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -62,6 +118,12 @@ export default function Personaldetails() {
                         name="phone"
                         placeholder="Phone Number"
                         type="number"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -73,6 +135,12 @@ export default function Personaldetails() {
                         name="country"
                         placeholder="Country"
                         type="text"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -84,6 +152,12 @@ export default function Personaldetails() {
                         name="city"
                         placeholder="City"
                         type="text"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -95,6 +169,12 @@ export default function Personaldetails() {
                         name="address"
                         placeholder="Address"
                         type="email"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -106,6 +186,12 @@ export default function Personaldetails() {
                         name="postalcode"
                         placeholder="Postal Code"
                         type="number"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -117,6 +203,12 @@ export default function Personaldetails() {
                         name="license"
                         placeholder="Driving License"
                         type="text"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -128,6 +220,12 @@ export default function Personaldetails() {
                         name="natioanlity"
                         placeholder="Nationality"
                         type="text"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -138,7 +236,13 @@ export default function Personaldetails() {
                         id="placeofbirth"
                         name="placeofbirth"
                         placeholder="Place of Birth"
-                        type="email"
+                        type="text"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
                 <div>
@@ -149,7 +253,13 @@ export default function Personaldetails() {
                         id="DOB"
                         name="DOB"
                         placeholder="Date of Birth"
-                        type="number"
+                        type="date"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
                     />
                 </div>
             </div>
