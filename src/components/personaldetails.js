@@ -5,8 +5,6 @@ import {Label, Input} from "reactstrap";
 import {update} from "../redux/slice/personaldetailsSlice";
 import "../styles/personaldetails.css";
 
-
-
 export default function Personaldetails() {
     const dispatch = useDispatch();
 
@@ -263,6 +261,27 @@ export default function Personaldetails() {
                     />
                 </div>
             </div>
+            <div className="summary">
+                <h4>Professional Summary</h4>
+                <p>Write 2-4 short & energetic sentences to interest the reader! Mention your role, experience & most importantly - your biggest achievements, best qualities and skills.</p>
+            <Label for="professionalsummary">
+                        Professional Summary
+                    </Label>
+                    <Input
+                        id="summary"
+                        name="summary"
+                        placeholder="Summary"
+                        type="textarea"
+                        onChange={(e) =>{
+                            dispatch(update({
+                                key: e.target.name,
+                                value: e.target.value
+                            }))
+                        }}
+                    />
+            </div>
+
+        
         </div>
     )
 }

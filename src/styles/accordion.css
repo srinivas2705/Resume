@@ -1,0 +1,9 @@
+.according{
+    display: flex;
+    gap: 1rem;
+}
+
+.accordination{
+    /* width: 30%; */
+    margin: auto;
+}

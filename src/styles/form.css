@@ -1,0 +1,8 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: scroll;
+    height: 320vh;
+    
+}
